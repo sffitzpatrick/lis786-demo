@@ -1,2 +1,6 @@
 title: Icelandic Lifting Stones
 theme: jekyll-theme-cayman
+collections:
+  lifting_stones:
+    output: true
+    layout: lifting_stone

@@ -5,6 +5,13 @@
   background-image: url(/assets/images/hero-bg.jpg);
   background-size: cover;
   background-position: center center;
+  h1 a {
+    color: #ffffff;
+    &:hover {
+      color: #f9f9f9;
+      text-decoration: none;
+    }
+  }
 }
 
 nav {
