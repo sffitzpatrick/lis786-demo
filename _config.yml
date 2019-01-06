@@ -3,4 +3,10 @@ theme: jekyll-theme-cayman
 collections:
   lifting_stones:
     output: true
-    layout: lifting_stone
+
+
+defaults:
+  - scope:
+      type: "lifting_stones"
+    values:
+      layout: lifting_stone

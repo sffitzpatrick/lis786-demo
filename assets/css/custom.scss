@@ -1,5 +1,10 @@
 ---
 ---
+
+@mixin slight-shadow() {
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.08), 0px 0px 4px rgba(0,0,0,0.05)
+}
+
 .page-header {
   background-color: transparent;
   background-image: url(/assets/images/hero-bg.jpg);
@@ -50,7 +55,41 @@ nav {
   }
 }
 
+.img-left {
+  @media all and (min-width: 960px) {
+    width: 33%;
+    float: left;
+  }
+}
+
 img {
   max-width: 100%;
   height: auto;
+}
+
+.stone-teaser {
+  margin-bottom: 2.8em;
+  .teaser-image {
+    @media all and (min-width: 960px) {
+      img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        object-position: center center;
+        @include slight-shadow();
+      }
+    }
+  }
+  .teaser-content {
+    float: left;
+    width: 66%;
+    padding-left: 20px;
+    h2 {
+      margin-top: -8px; // just for alignment with the teaser image
+      margin-bottom: 0;
+    }
+    p {
+      margin: .25em 0;
+    }
+  }
 }
