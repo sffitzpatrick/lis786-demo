@@ -3,16 +3,57 @@ title: Home
 layout: default
 ---
 <p>Browse the stones below:</p>
-{% for lifting_stone in site.lifting_stones %}
-  <div class="stone-teaser clearfix">
-    <div class="img-left teaser-image">
-      <a href="{{ lifting_stone.url | relative_url }}" alt="go to the detail page"><img src="{{ lifting_stone.image | relative_url }}" alt="photo of {{ lifting_stone.title }}" /></a>
-    </div>
-    <div class="teaser-content">
-      <h2><a href="{{ lifting_stone.url | relative_url }}" alt="go to the detail page">{{ lifting_stone.title }}</a></h2>
-      <p>{{ lifting_stone.content | truncatewords: 44, '...' }}</p>
-      <p><small>Weight category: <em>{{ lifting_stone.category }}</em></small></p>
-      <p><a href="{{ lifting_stone.source }}" target="_blank">Source</a></p>
+
+<div class="card card-nav-tabs card-plain">
+  <div class="card-header card-header-primary">
+    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+    <div class="nav-tabs-navigation">
+      <div class="nav-tabs-wrapper">
+        <ul class="nav nav-tabs" data-tabs="tabs">
+          <li class="nav-item">
+            <a class="nav-link active show" href="#alpha" data-toggle="tab">Sort alphabetically<div class="ripple-container"></div></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#weight" data-toggle="tab">Sort by weight<div class="ripple-container"></div></a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-{% endfor %}
+  <div class="card-body ">
+    <div class="tab-content">
+      <div class="tab-pane active show" id="alpha">
+        {% for lifting_stone in site.lifting_stones %}
+          <div class="stone-teaser clearfix">
+            <div class="img-left teaser-image">
+              <a href="{{ lifting_stone.url | relative_url }}" alt="go to the detail page"><img src="{{ lifting_stone.image | relative_url }}" alt="photo of {{ lifting_stone.title }}" /></a>
+            </div>
+            <div class="teaser-content">
+              <h2><a href="{{ lifting_stone.url | relative_url }}" alt="go to the detail page">{{ lifting_stone.title }}</a></h2>
+              <p>{{ lifting_stone.content | truncatewords: 44, '...' }}</p>
+              <p><small>Weight category: <em>{{ lifting_stone.category }}</em></small></p>
+              <p><a href="{{ lifting_stone.source }}" target="_blank">Source</a></p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="tab-pane" id="weight">
+        {% assign sorted_stones = site.lifting_stones | sort: "category" %}
+        {% for lifting_stone in sorted_stones %}
+          <div class="stone-teaser clearfix">
+            <div class="img-left teaser-image">
+              <a href="{{ lifting_stone.url | relative_url }}" alt="go to the detail page"><img src="{{ lifting_stone.image | relative_url }}" alt="photo of {{ lifting_stone.title }}" /></a>
+            </div>
+            <div class="teaser-content">
+              <h2><a href="{{ lifting_stone.url | relative_url }}" alt="go to the detail page">{{ lifting_stone.title }}</a></h2>
+              <p>{{ lifting_stone.content | truncatewords: 44, '...' }}</p>
+              <p><small>Weight category: <em>{{ lifting_stone.category }}</em></small></p>
+              <p><a href="{{ lifting_stone.source }}" target="_blank">Source</a></p>
+            </div>
+          </div>
+        {% endfor %}
+        <p>Coming Soon.</p>
+      </div>
+    </div>
+  </div>
+</div>
