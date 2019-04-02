@@ -1,0 +1,36 @@
+---
+title: API example
+layout: bare
+permalink: api-example
+---
+<form action="#" id="api-form">
+  <label for="api-input">Enter a number</label>
+  <input type="number" id="api-input" required>
+  <input type="submit" id="api-submit" value="Go!">
+</form>
+
+<div id="api-response"></div>
+
+<script>
+  $('#api-form').submit( function(e) {
+    e.preventDefault();
+
+    var num = $('#api-input').val();
+    var requestUrl = 'http://numbersapi.com/' + num + '/trivia';
+
+    $.ajax({
+      url : requestUrl,
+      type : 'GET',
+      success : function(data) {
+        // what happens when the request is successful
+        $('#api-response').text(data);
+      },
+      error : function(request,error) {
+        // what happens when there's an error
+        $('#api-response').text(request.status);
+      }
+    });
+
+  });
+
+</script>
